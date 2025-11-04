@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Cadastrar Novo País</h1>
+</div>
+
+<form action="{{ url_for('cadastrar_pais') }}" method="POST">
+    <div class="mb-3">
+        <label for="nome_pais" class="form-label">Nome do País</label>
+        <input type="text" class="form-control" id="nome_pais" name="nome_pais" required>
+    </div>
+<!--podemos colocar caracteristicas como clima, cultura alimenticia etc. Sei lá, só anotando uma ideia ksksk-->
+    
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="{{ url_for('paises') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

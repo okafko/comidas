@@ -1,0 +1,99 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fffbef;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            background-color: #f7fdff;
+            padding: 10px 30px;
+        }
+
+        #logo {
+            width: 85px;
+            height: auto;
+            margin-right: 40px;
+        }
+
+        #menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .list {
+            font-weight: bold;
+        }
+
+        .list a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #4591bd;
+            font-size: 26px;
+            padding: 12px 20px;
+            border-radius: 7px;
+            transition: background 0.3s;
+            margin-right: 75px;
+        }
+
+        #menu li:first-child a {
+            margin-left: 50px;
+        }
+
+        .list a:hover {
+            background-color: #4591bd;
+            color: #f7fdff;
+        }
+
+        /* Barra de pesquisa */
+        .item-pesquisa {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        #form-pesquisa {
+            display: flex;
+            align-items: center;
+        }
+
+        #form-pesquisa input[type="text"] {
+            padding: 10px;
+            border-radius: 7px 0 0 7px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            width: 160px;
+        }
+
+        #form-pesquisa button {
+            padding: 10px 12px;
+            border: none;
+            background-color: #8ec1df;
+            color: white;
+            border-radius: 0 7px 7px 0;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #form-pesquisa button:hover {
+            background-color: #4591bd;
+        }
+
+        #form-pesquisa button svg {
+            display: block;
+        }
