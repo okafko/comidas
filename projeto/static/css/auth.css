@@ -1,0 +1,94 @@
+/* Estilos para páginas de autenticação (login e cadastro), inspirados no menu.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fffbef;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.auth-container {
+    background-color: #f7fdff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.auth-container h2 {
+    color: #4591bd;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.auth-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-container label {
+    color: #4591bd;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.auth-container input[type="text"],
+.auth-container input[type="email"],
+.auth-container input[type="password"] {
+    padding: 12px;
+    border: 1px solid #8ec1df;
+    border-radius: 7px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    transition: border 0.3s;
+}
+
+.auth-container input[type="text"]:focus,
+.auth-container input[type="email"]:focus,
+.auth-container input[type="password"]:focus {
+    border-color: #4591bd;
+    outline: none;
+}
+
+.auth-container button {
+    background-color: #8ec1df;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.auth-container button:hover {
+    background-color: #4591bd;
+}
+
+.auth-container p {
+    color: #333;
+    margin-top: 20px;
+}
+
+.auth-container a {
+    color: #4591bd;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-container a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: #ff6b6b;
+    font-size: 14px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/comidas.css') }}">
+    <title>Favoritos</title>
+    <style>
+        /* Estilos gerais do site (incorporando o CSS fornecido) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fffbef;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            background-color: #f7fdff;
+            padding: 10px 30px;
+        }
+
+        #logo {
+            width: 85px;
+            height: auto;
+            margin-right: 40px;
+        }
+
+        #menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .list {
+            font-weight: bold;
+        }
+
+        .list a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #4591bd;
+            font-size: 26px;
+            padding: 12px 20px;
+            border-radius: 7px;
+            transition: background 0.3s;
+            margin-right: 75px;
+        }
+
+        #menu li:first-child a {
+            margin-left: 50px;
+        }
+
+        .list a:hover {
+            background-color: #4591bd;
+            color: #f7fdff;
+        }
+
+        /* Barra de pesquisa */
+        .item-pesquisa {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        #form-pesquisa {
+            display: flex;
+            align-items: center;
+        }
+
+        #form-pesquisa input[type="text"] {
+            padding: 10px;
+            border-radius: 7px 0 0 7px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            width: 160px;
+        }
+
+        #form-pesquisa button {
+            padding: 10px 12px;
+            border: none;
+            background-color: #8ec1df;
+            color: white;
+            border-radius: 0 7px 7px 0;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #form-pesquisa button:hover {
+            background-color: #4591bd;
+        }
+
+        #form-pesquisa button svg {
+            display: block;
+        }
+
+        /* Estilos específicos para a página de Favoritos */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f7fdff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h2 {
+            color: #4591bd;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .comida {
+            background-color: #fffbef;
+            border: 1px solid #8ec1df;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .comida-imagem {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .comida-nome {
+            color: #4591bd;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .comida p {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .descrição {
+            font-style: italic;
+            color: #555;
+        }
+
+        .btn-receita {
+            background-color: #8ec1df;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-receita:hover {
+            background-color: #4591bd;
+        }
+
+        .remove-favorite-btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .remove-favorite-btn:hover {
+            background-color: #e55a5a;
+        }
+
+        /* Estilos para quando o usuário não está logado */
+        .login-message {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .login-message p {
+            color: #4591bd;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .btn-login {
+            background-color: #8ec1df;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+
+        .btn-login:hover {
+            background-color: #4591bd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('home') }}">
+            <img id="logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" />
+        </a>
+        <nav>
+            <ul id="menu">
+                <li class="list"><a href="{{ url_for('home') }}">Home</a></li>
+                <li class="list"><a href="{{ url_for('comidas') }}">Comidas</a></li>
+                <li class="list"><a href="{{ url_for('favoritos') }}">Favoritos</a></li>
+                <li class="list"><a href="{{ url_for('login') }}">Login</a></li>
+                <li class="item-pesquisa">
+                </li>
+            </ul>
+        </nav>
+    </header>
+    {% if user_logged_in %}
+        <div class="container">
+            <h2>Seus Favoritos</h2>
+            {% if favorites %}
+                {% for fav in favorites %}
+                <div class="comida" data-id="{{ fav[0] }}">
+                    <img src="{{ url_for('static', filename=fav[4]) }}" alt="{{ fav[1] }}" class="comida-imagem">
+                    <h1 class="comida-nome">{{ fav[1] }}"></h1>
+                    <p>{{ fav[3] }}</p>
+                    <p>-------------------------</p>
+                    <p class="descrição">{{ fav[2] }}</p>
+                    <button class="btn-receita">Ver receita</button>
+                    <button class="remove-favorite-btn" data-id="{{ fav[0] }}">Remover dos Favoritos</button>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p style="text-align: center; color: #4591bd;">Você ainda não tem favoritos. Adicione alguns na página de comidas!</p>
+            {% endif %}
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('.remove-favorite-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const foodId = this.dataset.id;
+                        fetch('/api/favoritar', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ food_id: parseInt(foodId), action: 'remove' })
+                        }).then(response => response.json()).then(data => {
+                            if (data.success) {
+                                // Remove o item da página sem recarregar
+                                this.closest('.comida').remove();
+                                // Se não houver mais favoritos, mostra mensagem
+                                if (!document.querySelector('.comida')) {
+                                    document.querySelector('.container').innerHTML = '<h2>Seus Favoritos</h2><p style="text-align: center; color: #4591bd;">Você ainda não tem favoritos. Adicione alguns na página de comidas!</p>';
+                                }
+                            }
+                        });
+                    });
+                });
+            });
+        </script>
+    {% else %}
+        <div class="login-message">
+            <p>Você precisa estar logado para isso.</p>
+            <button class="btn-login" onclick="window.location.href='{{ url_for('login') }}'">Fazer Login</button>
+        </div>
+    {% endif %}
+</body>
+</html>

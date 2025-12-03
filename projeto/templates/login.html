@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <title>Login</title>
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('home') }}">
+            <img id="logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" />
+        </a>
+        <nav>
+            <ul id="menu">
+                <li class="list"><a href="{{ url_for('home') }}">Home</a></li>
+                <li class="list"><a href="{{ url_for('comidas') }}">Comidas</a></li>
+                <li class="list"><a href="{{ url_for('favoritos') }}">Favoritos</a></li>
+                <li class="list"><a href="{{ url_for('login') }}">Login</a></li>
+                <li id="item-pesquisa">
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div style="padding: 20px; text-align: center;">
+        <h2>Login</h2>
+        <form method="post" style="display: inline-block; text-align: left;">
+            <label for="username">Usuário:</label><br>
+            <input type="text" name="username" id="username" placeholder="Digite seu usuário" required style="margin-bottom: 10px; padding: 8px;"><br>
+            <label for="password">Senha:</label><br>
+            <input type="password" name="password" id="password" placeholder="Digite sua senha" required style="margin-bottom: 10px; padding: 8px;"><br>
+            <button type="submit" style="padding: 10px 20px; background-color: #4591bd; color: white; border: none; border-radius: 5px;">Entrar</button>
+            {% if error %}<p style="color: red;">{{ error }}</p>{% endif %}
+        </form>
+        <br><br>
+        <p>Você não tem cadastro? <button onclick="window.location.href='{{ url_for('cadastro') }}'" style="padding: 10px 20px; background-color: #8ec1df; color: white; border: none; border-radius: 5px;">Clique aqui para se cadastrar</button></p>
+    </div>
+</body>
+</html>

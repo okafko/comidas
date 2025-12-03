@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/comidas.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+   <title>Nome - Comidas</title>
+</head>
+<body>
+   <header>
+      <a href="{{ url_for('home') }}">
+         <img id="logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" />
+      </a>
+      <nav>
+         <ul id="menu">
+                <li class="list"><a href="{{ url_for('home') }}">Home</a></li>
+                <li class="list"><a href="{{ url_for('comidas') }}">Comidas</a></li>
+                <li class="list"><a href="{{ url_for('favoritos') }}">Favoritos</a></li>
+                <li class="list"><a href="{{ url_for('login') }}">Login</a></li>
+                <li class="item-pesquisa">
+                </li>
+            </ul>
+      </nav>
+    </header>
+    <!-- Filtros adicionados (sem alterar estilos) -->
+    <div class="container">
+        <div style="margin-bottom: 20px;">
+            <label for="country-filter">Filtrar por País:</label>
+            <select id="country-filter" style="margin-left: 10px;">
+                <option value="">Todos</option>
+                <option value="Brasil">Brasil</option>
+                <option value="Itália">Itália</option>
+                <option value="Japão">Japão</option>
+                <option value="México">México</option>
+            </select>
+            <button id="sort-asc" style="margin-left: 20px;">A-Z</button>
+            <button id="sort-desc" style="margin-left: 10px;">Z-A</button>
+        </div>
+        <div id="foods-container">
+            <!-- Comidas carregadas dinamicamente via JS -->
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/comidas.js') }}"></script>
+</body>
+</html>

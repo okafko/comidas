@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>Nome - Home</title>
+   <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+   <header>
+    <a href="index.html">
+         <img id="logo" src="img/logo.png" alt="Logo" />
+      </a>
+      <nav>
+         <ul id="menu">
+                <li class="list"><a href="{{ url_for('home') }}">Home</a></li>
+                <li class="list"><a href="{{ url_for('comidas') }}">Comidas</a></li>
+                <li class="list"><a href="{{ url_for('favoritos') }}">Favoritos</a></li>
+                <li class="list"><a href="{{ url_for('login') }}">Login</a></li>
+                <li id="item-pesquisa">
+            
+                </li>
+            </ul>
+      </nav>
+    </header>
+   </body>
+</html>
